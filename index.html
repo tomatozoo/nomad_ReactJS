@@ -9,27 +9,22 @@
 
     <script type="text/babel">
         // root에 접근
+        let counter = 0;
+        function countUp(){
+            counter = counter + 1;
+            render();
+        }
+        function render() {
+            ReactDOM.render(<Container/>, root);
+
+        }
+
         const root = document.getElementById("root");
-
-        const Title = () => { 
-            return ( 
-                <h3 id="title" onMouseEnter={()=>console.log("mouse enter")}>
-                    Hello I'm a Title
-                </h3>
-            )};
-
-        const Button = () => { 
-            return ( 
-                <button style={{backgroundColor:"tomato",}}>
-                    Click me
-                </button>
-            )};
-
-        const Container = <div>
-            <Title/>
-            <Button/>
-        </div>
-        ReactDOM.render(Container, root);
+        const Container = () => (<div>
+            <h3>Total click : {counter}</h3>
+            <button onClick={countUp}>Click me</button>
+        </div>);
+        render();
         // 페이지에 위치시키기
     </script>
 </html>
