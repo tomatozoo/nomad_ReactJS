@@ -8,23 +8,21 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
-        // root에 접근
-        let counter = 0;
-        function countUp(){
-            counter = counter + 1;
-            render();
-        }
-        function render() {
-            ReactDOM.render(<Container/>, root);
-
-        }
-
         const root = document.getElementById("root");
-        const Container = () => (<div>
-            <h3>Total click : {counter}</h3>
-            <button onClick={countUp}>Click me</button>
-        </div>);
-        render();
+        
+        function App() {
+            const [counter, setCounter] = React.useState(0);
+            const onClick = () => {
+                setCounter(counter+1);
+            };
+            return (
+                <div>
+                    <h3>Total click : {counter}</h3>
+                    <button onClick={onClick}>Click me</button>
+                </div>
+            );
+        }
+        ReactDOM.render(<App />, root);// 페이지에 위치시키기
         // 페이지에 위치시키기
     </script>
 </html>
